@@ -16,6 +16,8 @@ endif
 function! Ready()
   " py print "hi there!"
   " py import os; print os.getcwd()
+  python import sys
+  python sys.argv = ['ready']
   pyfile %:h/ready.py
 endf
 
