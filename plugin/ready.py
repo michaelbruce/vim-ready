@@ -11,6 +11,7 @@ state = 'stopped'
 
 # TODO count break whilst warning the user.
 # TODO log pomodoros? (extension)
+# TODO pyfile should work everywhere, not just locally.
 
 class Pomodoro(threading.Thread):
     def __init__(self):

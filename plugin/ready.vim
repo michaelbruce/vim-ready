@@ -11,22 +11,22 @@ let g:loaded_ready = 1
 
 if !has('python')
   finish
+else
+  python import sys
 endif
 
 function! Ready()
-  python import sys
   python sys.argv = ['ready']
-  pyfile %:h/ready.py
+  pyfile $HOME/.vim/plugin/vim-ready/ready.py
 endf
 
-command! Ready call Ready()
-command! Start call Ready()
-
 function! Stop()
-  python import sys
   python sys.argv = ['stop']
-  pyfile %:h/ready.py
+  pyfile $HOME/.vim/plugin/vim-ready/ready.py
 endf
 
 command! Stop call Stop()
+command! Ready call Ready()
+command! Start call Ready()
+
 
