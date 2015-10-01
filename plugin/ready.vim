@@ -14,12 +14,19 @@ if !has('python')
 endif
 
 function! Ready()
-  " py print "hi there!"
-  " py import os; print os.getcwd()
   python import sys
   python sys.argv = ['ready']
   pyfile %:h/ready.py
 endf
 
 command! Ready call Ready()
+command! Start call Ready()
+
+function! Stop()
+  python import sys
+  python sys.argv = ['stop']
+  pyfile %:h/ready.py
+endf
+
+command! Stop call Stop()
 
