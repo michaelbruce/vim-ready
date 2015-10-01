@@ -8,6 +8,7 @@
 " endif
 
 let g:loaded_ready = 1
+let s:python_file = expand('<sfile>:p:h') . '/ready.py'
 
 if !has('python')
   finish
@@ -17,12 +18,12 @@ endif
 
 function! Ready()
   python sys.argv = ['ready']
-  pyfile $HOME/.vim/plugin/vim-ready/ready.py
+  exec 'pyfile' . s:python_file
 endf
 
 function! Stop()
   python sys.argv = ['stop']
-  pyfile $HOME/.vim/plugin/vim-ready/ready.py
+  exec 'pyfile ' . s:python_file
 endf
 
 command! Stop call Stop()
