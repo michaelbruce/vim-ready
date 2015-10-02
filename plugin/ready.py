@@ -3,7 +3,6 @@ import vim, sys, threading, time
 global state
 state = 'stop'
 
-
 class Pomodoro(threading.Thread):
     def __init__(self):
         super(Pomodoro,self).__init__()
@@ -22,4 +21,3 @@ if sys.argv[0] == 'ready':
 elif sys.argv[0] == 'stop':
     state = 'stop'
     print("Shutdown!")
-
