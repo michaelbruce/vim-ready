@@ -13,8 +13,18 @@ let s:python_file = expand('<sfile>:p:h') . '/ready.py'
 if !has('python')
   finish
 else
-  python import sys
+  python import sys; sys.argv = ['stop']
 endif
+
+function! ToggleReady()
+  python << EOF
+if sys.argv == ['stop']:
+    sys.argv = ['ready']
+else:
+    sys.argv = ['stop']
+EOF
+  exec 'pyfile' . s:python_file
+endf
 
 function! Ready()
   python sys.argv = ['ready']
@@ -27,7 +37,6 @@ function! Stop()
 endf
 
 command! Stop call Stop()
-command! Ready call Ready()
+command! ToggleReady call ToggleReady()
 command! Start call Ready()
-
-
+command! Toggle call Toggle()
